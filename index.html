@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rosy's XV</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+
+            background:#5B7DBB;
+
+            font-family:"Cormorant Garamond", serif;
+
+            color:white;
+
+        }
+
+        .container{
+
+
+            width:min(95vw,1100px);
+
+
+
+            margin:auto;
+
+            display:flex;
+
+            flex-direction:column;
+
+            align-items:center;
+
+        }
+        /* ===========================
+      SCROLL ANIMATION
+=========================== */
+
+        .hidden{
+
+            opacity:0;
+
+            transform:translateY(60px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .show{
+
+            opacity:1;
+
+            transform:translateY(0);
+
+        }
+        
+        /* ================= HEADER ================= */
+
+        .hero{
+
+            width:100%;
+
+            display:flex;
+
+            justify-content:center;
+
+            margin-top:10px;
+
+            margin-bottom:10px;
+
+        }
+        .hero img{
+
+            width: clamp(420px, 90vw, 1000px);
+
+            height: auto;
+
+            display: block;
+
+        }
+
+        
+
+        /* ================= MUSIC ================= */
+
+        .music{
+
+            display:flex;
+
+            flex-direction:column;
+
+            align-items:center;
+
+            justify-content:center;
+
+            gap:18px;
+
+            background:rgba(255,255,255,.18);
+
+            padding:28px 40px;
+
+            border-radius:80px;
+
+            margin-bottom:90px;
+
+            text-align:center;
+
+        }
+
+        
+        .music img{
+
+            width:300px;
+
+            height:auto;
+
+            cursor:pointer;
+
+            transition:.3s;
+
+        }
+
+        .music img:hover{
+
+            transform:scale(1.08);
+
+        }
+
+        .music-text{
+
+            text-align:center;
+
+        }
+
+        
+        .music-text h2{
+
+            font-size:1.40rem;
+
+            color:#f4e6c3;
+
+            font-weight:600;
+
+            margin-bottom:6px;
+
+        }
+
+        
+        .music-text p{
+
+            font-size:1rem;
+
+            letter-spacing:3px;
+
+            color:white;
+
+        }
+
+        /* ================= DATE ================= */
+
+        .date{
+
+            margin-bottom:70px;
+
+        }
+        .date img{
+
+            width: clamp(280px, 50vw, 580px);
+
+            height: auto;
+
+            display: block;
+
+        }
+        
+        /* ================= MAGIC ================= */
+
+        .magic{
+
+            display:flex;
+
+            justify-content:center;
+
+            margin-bottom:45px;
+
+        }
+
+        .magic img{
+
+            width:clamp(260px,65vw,520px);
+
+            height:auto;
+
+            display:block;
+
+        }
+
+        /* ================= TITLE ================= */
+
+        .title{
+
+            font-family:"Great Vibes";
+
+            font-size:3.2rem;
+
+            color:white;
+
+            text-align:center;
+
+            margin-bottom:45px;
+
+        }
+
+        /* ================= COUNTDOWN ================= */
+
+        .countdown{
+
+            display:flex;
+
+            justify-content:center;
+
+            flex-wrap:wrap;
+
+            gap:20px;
+
+            margin-bottom:110px;
+
+        }
+
+        .box{
+
+            width:120px;
+
+            height:120px;
+
+            background:rgba(255,255,255,.16);
+
+            border-radius:25px;
+
+            display:flex;
+
+            flex-direction:column;
+
+            justify-content:center;
+
+            align-items:center;
+
+        }
+
+        .box h1{
+
+            font-size:2.8rem;
+
+            color:#f4e6c3;
+
+        }
+
+        .box p{
+
+            margin-top:8px;
+
+            letter-spacing:2px;
+
+        }
+
+        /* ================= SECTIONS ================= */
+
+        .location-section,
+        .rsvp-section,
+        .dress-section{
+
+            width:100%;
+
+            display:flex;
+
+            flex-direction:column;
+
+            align-items:center;
+
+            text-align:center;
+
+            margin-bottom:120px;
+
+        }
+
+        .section-icon{
+
+            width:70px;
+
+            margin-bottom:18px;
+
+        }
+
+        .section-heading{
+
+            font-family:"Great Vibes";
+
+            font-size:3rem;
+
+            color:#f4e6c3;
+
+            margin-bottom:18px;
+
+        }
+
+        .section-text{
+
+            color:white;
+
+            font-size:1.35rem;
+
+            line-height:1.8;
+
+            margin-bottom:10px;
+
+        }
+
+        .locations{
+
+            width:100%;
+
+            display:grid;
+
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+            gap:30px;
+
+            margin-top:25px;
+
+        }
+
+        .location-card{
+
+            background:rgba(255,255,255,.18);
+
+            backdrop-filter:blur(14px);
+
+            border-radius:28px;
+
+            padding:35px;
+
+            text-align:center;
+
+            box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+        }
+
+        .location-card h3{
+
+            font-family:"Great Vibes";
+
+            color:#f4e6c3;
+
+            font-size:2.2rem;
+
+            margin-bottom:18px;
+
+        }
+
+        .location-card p{
+
+            color:white;
+
+            line-height:1.8;
+
+            font-size:1.15rem;
+
+        }
+
+        .mini-button{
+
+            display:inline-block;
+
+            margin-top:25px;
+
+            text-decoration:none;
+
+            background:#f4e6c3;
+
+            color:white;
+
+            padding:12px 28px;
+
+            border-radius:50px;
+
+            letter-spacing:1px;
+
+            transition:.3s;
+
+        }
+
+        .mini-button:hover{
+
+            background:#f4e6c3;
+
+            color:#8b6427;
+
+        }
+        .button{
+
+            background:#f4e6c3;
+
+            color:white;
+
+            text-decoration:none;
+
+            padding:18px 42px;
+
+            border-radius:60px;
+
+            transition:.3s;
+
+            font-size:1rem;
+
+            letter-spacing:2px;
+
+        }
+
+        .button:hover{
+
+            background:#f4e6c3;
+
+            color:#8b6427;
+
+            transform:translateY(-3px);
+
+        }
+        .dress-gallery{
+
+            display:flex;
+
+            gap:35px;
+
+            justify-content:center;
+
+            flex-wrap:wrap;
+
+        }
+
+        .dress-gallery img{
+
+            width:260px;
+
+            border-radius:25px;
+
+            box-shadow:0 18px 35px rgba(0,0,0,.10);
+
+            transition:.35s;
+
+        }
+
+        .dress-gallery img:hover{
+
+            transform:scale(1.04);
+
+        }
+        .section-title-image{
+
+            width: clamp(180px, 40vw, 320px);
+
+            height: auto;
+
+        }
+
+        @media(max-width:768px){
+
+            .hero{
+
+                margin-top:40px;
+
+                margin-bottom:60px;
+
+            }
+
+            .music{
+
+                flex-direction:column;
+
+                text-align:center;
+
+                padding:28px;
+
+            }
+
+            .music-text{
+
+                text-align:center;
+
+            }
+
+            .title{
+
+                font-size:2.5rem;
+
+            }
+
+            .box{
+
+                width:95px;
+
+                height:95px;
+
+            }
+
+            .box h1{
+
+                font-size:2rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        /* ==========================================
+        ANIMACIONES AL HACER SCROLL
+        ========================================== */
+
+        const hiddenElements = document.querySelectorAll(".hidden");
+
+        if (hiddenElements.length > 0) {
+            hiddenElements[0].classList.add("show");
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.15
+        });
+
+        hiddenElements.forEach((element, index) => {
+
+            if (index !== 0) {
+
+                observer.observe(element);
+
+            }
+
+        });
+
+
+        /* ==========================================
+        REPRODUCTOR DE MÚSICA
+        ========================================== */
+
+        const music = document.getElementById("music");
+        const playButton = document.getElementById("playButton");
+
+        if (music && playButton) {
+
+            let playing = false;
+
+            playButton.addEventListener("click", () => {
+
+                if (!playing) {
+
+                    music.play();
+                    playButton.classList.add("playing");
+
+                } else {
+
+                    music.pause();
+                    playButton.classList.remove("playing");
+
+                }
+
+                playing = !playing;
+
+            });
+
+            music.addEventListener("ended", () => {
+
+                playing = false;
+                playButton.classList.remove("playing");
+
+            });
+
+        }
+
+
+        /* ==========================================
+        CONTADOR REGRESIVO
+        ========================================== */
+
+        const days = document.getElementById("days");
+        const hours = document.getElementById("hours");
+        const minutes = document.getElementById("minutes");
+        const seconds = document.getElementById("seconds");
+
+        if (days && hours && minutes && seconds) {
+
+            const targetDate = new Date("2026-10-03T17:00:00-06:00").getTime();
+
+            function updateCountdown() {
+
+                const now = new Date().getTime();
+
+                const distance = targetDate - now;
+
+                if (distance <= 0) {
+
+                    days.textContent = "00";
+                    hours.textContent = "00";
+                    minutes.textContent = "00";
+                    seconds.textContent = "00";
+
+                    clearInterval(timer);
+
+                    return;
+
+                }
+
+                const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+                const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+                const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                days.textContent = String(d).padStart(2, "0");
+                hours.textContent = String(h).padStart(2, "0");
+                minutes.textContent = String(m).padStart(2, "0");
+                seconds.textContent = String(s).padStart(2, "0");
+
+            }
+
+            updateCountdown();
+
+            const timer = setInterval(updateCountdown, 1000);
+
+        }
+
+    });
+
+</script>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <section class="hero">
+
+        <img src="assets/images/encabezado.png" alt="Rosy's XV">
+
+    </section>
+
+    <!-- MUSIC -->
+
+    <section class="music hidden">
+
+        
+
+        <div class="music-text">
+
+            <h2>A Dream Is A Wish Your Heart Makes</h2>
+
+            <p>CLICK TO PLAY</p>
+            <img
+                src="assets/images/music.png"
+                class="play-icon"
+                id="playButton"
+                alt="Play">
+
+        </div>
+        <audio id="music">
+
+            <source src="assets/audio/musica.mp3" type="audio/mpeg">
+
+        </audio>
+
+    </section>
+
+    <!-- DATE -->
+
+    <section class="date hidden">
+
+        <img src="assets/images/fecha.png" alt="Date">
+
+    </section>
+
+    <!-- COUNTDOWN -->
+
+    <section class="magic hidden">
+
+        <img src="assets/images/magic.png" alt="The magic begins in">
+
+    </section>
+
+    <section class="countdown hidden">
+
+        <div class="box">
+            <h1 id="days">00</h1>
+            <p>DAYS</p>
+        </div>
+
+        <div class="box">
+            <h1 id="hours">00</h1>
+            <p>HOURS</p>
+        </div>
+
+        <div class="box">
+            <h1 id="minutes">00</h1>
+            <p>MINUTES</p>
+        </div>
+
+        <div class="box">
+            <h1 id="seconds">00</h1>
+            <p>SECONDS</p>
+        </div>
+
+    </section>
+    <!-- ================= LOCATION ================= -->
+
+    <!-- ================= LOCATION ================= -->
+
+    <section class="location-section hidden">
+
+
+
+        <img
+            src="assets/images/locations.png"
+            class="section-title-image"
+            alt="Locations">
+
+        <div class="locations">
+
+            <!-- Misa -->
+
+            <div class="location-card">
+
+                <h3>Misa</h3>
+
+                <p><strong>Parroquia Cristo Rey</strong></p>
+
+                <p>3a. Calle 10-50 Zona 15 Col. Tecun Umán</p>
+
+                <p>5:00 PM</p>
+
+                <a href="https://maps.app.goo.gl/irG13JEwACpHoU3G9" class="mini-button" target="_blank">
+                    Open in Maps
+                </a>
+
+            </div>
+
+            <!-- Recepción -->
+
+            <div class="location-card">
+
+                <h3>Recepción</h3>
+
+                <p><strong>Hotel Wyndham Garden</strong></p>
+
+                <p>1a avenida 12-46 zona 10l</p>
+
+                <p>Salon Tulipanes Tulipanes 2 & 3</p>
+
+                <p>Segundo Nivel</p>
+
+                <p>7:00 PM – 12:00 AM</p>
+
+                <a href="https://maps.app.goo.gl/tHoeBEdCCi5vi3es5" class="mini-button" target="_blank">
+                    Open in Maps
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= RSVP ================= -->
+
+    <section class="rsvp-section hidden">
+
+        <h2 class="section-heading">
+
+            RSVP
+
+        </h2>
+
+        <p class="section-text hidden">
+
+            Your presence is the greatest gift.
+
+            <br>
+
+            Please confirm your attendance.
+
+        </p>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsL-Kpk7L3BZ87yrqSRxvYWdDDEQgDFpPcG8aBo8U64SOCaw/viewform?usp=publish-editor"
+        target="_blank"
+        class="button">
+
+            Confirm Attendance
+
+        </a>
+
+    </section>
+    <!-- ================= DRESS CODE ================= -->
+
+    <section class="dress-section hidden">
+
+       
+
+        <img
+            src="assets/images/dresscode.png"
+            class="section-title-image"
+            alt="Dress Code">
+
+        <p><strong>*No usar tonos azules</strong></p>
+
+        <br>
+
+        <div class="dress-gallery">
+
+            <img src="assets/images/ejemplo1.png">
+
+            <img src="assets/images/ejemplo2.png">
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+
+</html>
